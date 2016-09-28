@@ -1,0 +1,69 @@
+# This file contains metadata for your plugin. Since
+# version 2.0 of QGIS this is the proper way to supply
+# information about a plugin. The old method of
+# embedding metadata in __init__.py will
+# is no longer supported since version 2.0.
+
+# This file should be included when you package your plugin.# Mandatory items:
+
+[general]
+name=CADDigitize
+qgisMinimumVersion=2.14
+description= CAD like tools for QGis
+ Fork of Rectangles Ovals Digitizing. Inspired by CadTools, LibreCAD/AutoCAD.
+version=0.2.b
+author=Loïc BARTOLETTI
+email=lbartoletti@tuxfamily.fr
+
+about=CAD like tools for QGis Fork of Rectangles Ovals Digitizing. Inspired by CadTools, LibreCAD/AutoCAD.
+
+tracker=https://gitlab.com/lbartoletti/CADDigitize/
+repository=https://gitlab.com/lbartoletti/CADDigitize/
+# End of mandatory metadata
+
+# Recommended items:
+
+# Uncomment the following line and add your changelog:
+changelog=Version 0.2.0:
+    Partially rewrite from scratch
+    New GUI:
+        Use a dockwidget now
+        CADDigitize moved into Vector's menu
+    Use Advanced Digitizing Tools (best integration with QGis)
+    Respect topological editing options
+    Add information when draw shapes
+    Add light command line (beta)
+    Drop numpy dependance
+    New API for using shapes
+
+Version 0.1.3:
+    New snapping for QGis >= 2.8 ; No more needs to press ctrl
+    Change repository (Move to gitlab)
+
+Version 0.1.2:
+    Add editing tools:
+        Trim and extend
+        Offset (and buffer)
+    Documentation
+    Fix bugs
+    Need numpy
+
+Version 0.1.1:
+    Add Numerical Digitize
+    Fix snapping
+    Add translation (fr)
+    Fix save attribute after create feature
+    Fix bug with Circle by 3 points
+
+# Tags are comma separated with spaces allowed
+tags=cad, circle, digitizing, geocoding, geometry, polyline, polygon, point, processing, vector, square, arc, ellipse
+
+homepage=http://hub.qgis.org/projects/caddigitize/
+category=Plugins
+icon=icon.png
+# experimental flag
+experimental=False
+
+# deprecated flag (applies to the whole plugin, not just a single version)
+deprecated=False
+

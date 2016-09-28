@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+    
+<html>
+    <head>
+        <title>Monografia</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href=".bootstrap.css" rel="stylesheet" type="text/css"/>
+    <style>
+        
+       /*Inicio Configuracao do tamanho de pagina*/ 
+        body {
+          background: rgb(204,204,204); 
+          font-size: 11px;
+          
+        }
+        page {
+          background: white;
+          display: block;
+          margin: 0 auto;
+          margin-bottom: 0.5cm;
+          box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+        }
+        page[size="A4"] {  
+          width: 21cm;
+          height: 29.7cm; 
+        }
+        page[size="A4"][layout="portrait"] {
+          width: 29.7cm;
+          height: 21cm;  
+        }
+        page[size="A3"] {
+          width: 29.7cm;
+          height: 42cm;
+        }
+        page[size="A3"][layout="portrait"] {
+          width: 42cm;
+          height: 29.7cm;  
+        }
+        page[size="A5"] {
+          width: 14.8cm;
+          height: 21cm;
+        }
+        page[size="A5"][layout="portrait"] {
+          width: 21cm;
+          height: 14.8cm;  
+        }
+        @media print {
+          body, page {
+            margin: 0;
+            box-shadow: 0;
+          }
+        }
+     /*Fim da configuracao do tamanho de pagina*/   
+     
+      .mytable {
+      border-collapse: collapse;
+      width: 100%;
+      height: 40px;
+      background-color: white;
+    }
+    .mytable-head {
+      border: 1px solid black;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .mytable-head td {
+      border: 1px solid black;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      
+    }
+    .mytable-body {
+      border: 1px solid black;
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .mytable-body td {
+      border: 1px solid black;
+      border-top: 0;
+      max-width: 29.7cm
+    }
+    .mytable-body td div {
+        width: 90%;
+    }
+    .mytable-footer {
+      border: 1px solid black;
+      border-top: 0;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .mytable-footer td {
+      border: 1px solid black;
+      border-top: 0;
+    }
+    .recuo{
+        margin-left: 3px
+    }
+    .titulo{
+        background-color: #aaaaaa !important;
+    }
+        
+        
+    </style>
+    </head>
+    <body>
+    <page size="A4">
+        <table class="mytable mytable-head">
+            <tr style="height: 60px">
+            <td width="10%">
+                <img src=".dl.png" style="width: 90px; height: 90px">
+            </td>
+            <td class="text-center" width="90%" style="background-color: tomato !important; font-size: 14px !important"><strong>PONTO DE REFERÊNCIA - CONTROLE</strong></td>      
+            </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="55%" class="text-left"><strong class="recuo">Executante:</strong>{{executante}}</td>
+              <td width="45%" class="text-left"><strong class="recuo">Projeto:</strong>{{projeto}}</td>
+
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="100%" class="text-center titulo"><strong>DADOS DA BASE</strong></td>            
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="24%" class="text-center"><strong>Origem do Levantamento</strong></td>
+            <td width="20%" class="text-center">{{origem-do-levantamento}}</td>
+            <td width="08%" class="text-center"><strong>Nome</strong></td>
+            <td width="25%" class="text-center">{{nome-ponto-(ID)}}</td>
+            <td width="08%" class="text-center"><strong>Datum</strong></td>
+            <td width="15%" class="text-center">SIRGAS2000</td>
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="100%" class="text-center titulo"><strong>DADOS DO PONTO MEDIDO</strong></td>           
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="07%" class="text-center"><strong>NOME</strong></td>
+            <td width="08%" class="text-center">{{nome-ponto-(ID)}}</td>
+            <td width="20%" class="text-center"><strong>Distancia Base-Ponto</strong></td>
+            <td width="10%" class="text-center">{{distancia-ponto-base-(km)}}</td>
+            <td width="10%" class="text-center"><strong>Tipo(EDGV)</strong></td>
+            <td width="10%" class="text-center">{{tipo-(EDGV)}}</td>
+            <td width="13%" class="text-center"><strong>Municipio/UF</strong></td>
+            <td width="22%" class="text-center">{{municipio/UF}}</td>          
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="100%" class="text-center titulo"><strong>COORDENADAS GEOGRAFICAS</strong></td>          
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="20%" class="text-center"><strong>Latitude</strong></td>
+            <td width="30%" class="text-center">{{latitude-(global)}}</td>
+            <td width="20%" class="text-center"><strong>Longitude</strong></td>
+            <td width="30%" class="text-center">{{longitude-(global)}}</td>
+                    
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>COORDENADAS PLANAS (UTM)</strong></td>      
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="07%" class="text-center"><strong>N (m)</strong></td>
+            <td width="14%" class="text-center">{{N}}</td>
+            <td width="07%" class="text-center"><strong>E (m)</strong></td>
+            <td width="14%" class="text-center">{{E}}</td>
+            <td width="07%" class="text-center"><strong>Fuso</strong></td>
+            <td width="07%" class="text-center">{{fuso}}</td>
+            <td width="18%" class="text-center"><strong>Meridiano Central</strong></td>
+            <td width="26%" class="text-center">{{meridiano-central}}</td>          
+          </tr>
+        </table>
+        
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>ALTITUDE</strong></td>         
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="30%" class="text-center"><strong>Elipsoidal (m)</strong></td>
+            <td width="20%" class="text-center">{{altitude-elipsoidal}}</td>
+            <td width="30%" class="text-center"><strong>Ortométrica Calculada (m)</strong></td>
+            <td width="20%" class="text-center">{{altitude-ortometrica}}</td>
+                    
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>SIGMA</strong></td>         
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="30%" class="text-center"><strong>Precisão Horizontal</strong></td>
+            <td width="20%" class="text-center">{{precisao-horizontal}}</td>
+            <td width="30%" class="text-center"><strong>Precisão Vertical</strong></td>
+            <td width="20%" class="text-center">{{precisao-vertical}}</td>               
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>DESCRIÇÃO DO LEVANTAMENTO</strong></td>                
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="09%" class="text-center"><strong>Operador</strong></td>
+            <td width="13%" class="text-center">{{operador-levantamento}}</td>
+            <td width="20%" class="text-center"><strong>Receptor GNSS/Serie</strong></td>
+            <td width="15%" class="text-center">{{receptor/serie}}</td>
+            <td width="10%" class="text-center"><strong>Altura da antena(m)</strong></td>
+            <td width="6%" class="text-center">{{altura-da-antena}}</td>
+            <td width="12%" class="text-center"><strong>Antena/Serie</strong></td>
+            <td width="15%" class="text-center">{{antena/serie}}</td>          
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="12%" class="text-center"><strong>Data/Hora do rastreio</strong></td>
+            <td width="19%" class="text-center">{{data/hora-de-rastreio}}</td>
+            <td width="16%" class="text-center"><strong>Tempo de rastreio (min)</strong></td>
+            <td width="20%" class="text-center">{{tempo-de-rastreio}}</td>
+            <td width="14%" class="text-center"><strong>Taxa de Gravação (")</strong></td>
+            <td width="15%" class="text-center">{{taxa-de-gravacao}}</td>    
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>DESCRIÇÃO DO PROCESSAMENTO</strong></td>       
+          </tr>
+        </table>        
+        <table class="mytable mytable-footer">
+           <tr>
+            <td width="10%" class="text-center"><strong>Operador</strong></td>
+            <td width="14%" class="text-center">{{operador-processamento}}</td>
+            <td width="16%" class="text-center"><strong>Software/Versão</strong></td>
+            <td width="15%" class="text-center">{{software/versao}}</td>
+            <td width="09%" class="text-center"><strong>Arquivo KMZ</strong></td>
+            <td width="13%" class="text-center">{{arquivo-KMZ}}</td>
+            <td width="08%" class="text-center"><strong>RINEX</strong></td>
+            <td width="15%" class="text-center">{{RINEX}}</td>        
+          </tr>
+        </table>
+    </page>
+    <page size="A4">
+        <table class="mytable mytable-head" style="margin-top: 10px">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>IDENTIFICAÇÃO DO PONTO</strong></td>       
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="100%" class="text-center"><strong>Vista Aérea</strong></td>
+          </tr>
+        </table>  
+        <table class="mytable mytable-footer">
+          <tr>
+              <td width="100%" class="text-center" style="height: 600px"><img src={{path-vista-aerea}} style="height: 99%; width: 99%"></td>
+          </tr>
+        </table> 
+    </page>
+    <page size="A4">
+        <table class="mytable mytable-head" style="margin-top: 10px">
+          <tr>
+            <td width="100%" class="text-center titulo"><strong>VISTA LOCAL</strong></td>       
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="50%" class="text-center"><strong>Foto 1</strong></td>
+              <td width="50%" class="text-center"><strong>Foto 2</strong></td>
+          </tr>
+        </table>  
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="50%" class="text-center" style="height: 300px"><img src={{foto1}} style="height: 99%; width: 99%"></td>
+              <td width="50%" class="text-center" style="height: 300px"><img src={{foto2}} style="height: 99%; width: 99%"></td>
+          </tr>
+        </table>
+        <table class="mytable mytable-body">
+          <tr>
+              <td width="50%" class="text-center"><strong>Foto 3</strong></td>
+              <td width="50%" class="text-center"><strong>Foto 4</strong></td>
+          </tr>
+        </table>
+        <table class="mytable mytable-footer">
+          <tr>
+              <td width="50%" class="text-center" style="height: 300px"><img src={{foto3}} style="height: 99%; width: 99%"></td>
+              <td width="50%" class="text-center" style="height: 300px"><img src={{foto4}} style="height: 99%; width: 99%"></td>
+          </tr>
+        </table> 
+    </page>
+    <page size="A4">
+        <table class="mytable mytable-head" style="margin-top: 10px">
+            <tr>
+            <td width="100%" class="text-center"><strong>Croqui</strong></td>       
+          </tr>        
+        </table>
+        <table class="mytable mytable-footer">
+            <tr>
+                <td width="100%" class="text-center"  style="height: 500px">
+                    <img src={{path-croqui}} style="height: 99%; width: 99%">
+                </td>       
+          </tr>        
+        </table>
+        <table class="mytable mytable-head" style="margin-top: 10px">
+            <tr>
+            <td width="100%" class="text-center titulo"><strong>RESPONSÁVEL(EIS) TÉCNICO(S)</strong></td>       
+          </tr>        
+        </table>
+        <table class="mytable mytable-body">
+            <tr>
+                <td width="30%" class="text-center">
+                    <strong>Levantamento:</strong><br> 
+                    Data: {{data/hora-de-rastreio}}
+                </td> 
+                <td width="70%" class="text-center">
+                    <br>Responsável: ______________________________<br> 
+                    {{operador-levantamento}}<br>
+                    <strong>Responsável pelo Levantamento</strong><br>
+                    <strong>CREA:</strong>{{crea-operador-levantamento}}
+                   
+                </td>        
+          </tr>        
+        </table>
+        <table class="mytable mytable-body">
+            <tr>
+                <td width="30%" class="text-center">
+                    <strong>Processamento:</strong><br> 
+                    Data: {{data-processamento}}
+                </td> 
+                <td width="70%" class="text-center">
+                    <br>Responsável: __________________________<br> 
+                    {{operador-processamento}}<br>
+                    <strong>Responsável pelo Processamento</strong><br>
+                    <strong>CREA:</strong>{{crea-operador-processamento}}
+                   
+                </td>   
+          </tr>        
+        </table>
+        <table class="mytable mytable-body">
+            <tr>
+                <td width="30%" class="text-center">
+                    <strong>Monografia:</strong><br> 
+                    Data: {{data-monografia}}
+                </td> 
+                <td width="70%" class="text-center">
+                    <br>Responsável: __________________________<br> 
+                    {{operador-monografia}}<br>
+                    <strong>Responsável pela Monografia</strong><br>
+                    <strong>CREA:</strong>{{crea-operador-monografia}}
+                   
+                </td>   
+          </tr>        
+        </table>
+    </page>
+    </body>
+</html>

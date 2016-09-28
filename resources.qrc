@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/monografia" >
+        <file>icons/pdf.png</file>
+        <file>icons/csv.png</file>
+        <file>icons/treeFolder.png</file>
+        <file>icons/positive.png</file>
+        <file>icons/negative.png</file>
+        <file>icons/newProject.png</file>
+        <file>icons/openProject.png</file>        
+        <file>icons/createCsv.png</file>        
+    </qresource>
+</RCC>
