@@ -3,7 +3,7 @@ __author__ = "César Soares"
 __date__ = "$13/08/2016 00:20:12$"
 
 #imports system
-import os
+import os, sys
 import csv
 from project import Projeto
 #imports library
@@ -11,10 +11,13 @@ import pdfkit, shutil
 import time
 import re
 from distutils.dir_util import copy_tree
-        
+
+       
 class Monografia(Projeto):
     
     def __init__(self):
+        reload(sys)  
+        sys.setdefaultencoding('utf8')
         self.csvList = []
         
     def carregarCsv(self, csvPath):
@@ -25,9 +28,7 @@ class Monografia(Projeto):
         csvfile.close
             
     def createHtmlPdf(self):
-        with open (os.path.join(os.path.dirname(__file__), 'templates', 'monografia.html'), 'r') as template:
-            htmlTemplate = template.read()                       
-        options = {
+        opt = {
             'page-size': 'A4',
             'margin-top': '0.5cm',
             'margin-right': '0.5cm',
@@ -35,21 +36,40 @@ class Monografia(Projeto):
             'margin-left': '1.5cm',
             'encoding': "UTF-8",
             'no-outline': None
-        }          
+        } 
+        with open (os.path.join(os.path.dirname(__file__), 'templates', 'monografia.html'), 'r') as template:
+            htmlTemplate = template.read()  
+        paths = []          
         for line in self.csvList:
             data, pontoId = self.setVariables(line)
             html = self.setHtml(data, htmlTemplate) 
-            self.createHtml(html, pontoId)           
-            self.createPdf(pontoId, options)
-            
-    def createHtml(self, html, pontoId):
-        arquivo = open(os.path.join(str(self.project), 'html', pontoId+'.html'), 'w')
+            pathHtml = self.createtHtml(html, pontoId)
+            self.convertHtmlPdf(pathHtml, pontoId)
+                   
+    def createtHtml(self, html, pontoId):
+        pathHtml = os.path.join(str(self.project), 'html', str(pontoId)+'.html')
+        arquivo = open(pathHtml, 'w')
         arquivo.write(html)
         arquivo.close()
-        
-    def createPdf(self, pontoId, opt):
-        pdfkit.from_file((os.path.join(str(self.project), 'html', pontoId+'.html')), (os.path.join(str(self.project), 'pdf', pontoId+'.pdf')),options=opt)
-   
+        return pathHtml
+         
+               
+    def convertHtmlPdf(self, pathHtml, pontoId):
+        opt = {
+            'page-size': 'A4',
+            'margin-top': '0.5cm',
+            'margin-right': '0.5cm',
+            'margin-bottom': '6.0cm',
+            'margin-left': '1.5cm',
+            'encoding': "UTF-8",
+            'no-outline': None
+        } 
+        try:
+            pathPdf = os.path.join(self.project, 'pdf', str(pontoId)+'.pdf')
+            pdfkit.from_file(pathHtml, pathPdf, options=opt)
+        except:
+            pass
+           
     def setHtml(self, data, htmlTemplate):
         html = htmlTemplate
         for variable in data:
@@ -73,7 +93,7 @@ class Monografia(Projeto):
                     if re.search('[0-9]$', foto[:-4]):
                         data['{{foto'+str(number)+'}}'] = os.path.join(str(self.project),'fotos', foto)
                         number+=1
-                    if re.search('aerea', foto[:-4]):
+                    elif re.search('aerea', foto[:-4]):
                         data['{{path-vista-aerea}}'] = os.path.join(str(self.project),'fotos', foto)                    
                     elif re.search('croqui', foto[:-4]):
                         data['{{path-croqui}}'] = os.path.join(str(self.project),'fotos', foto)
