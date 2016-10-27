@@ -21,7 +21,7 @@ class GerarMonografia(QtGui.QDialog, FORM_CLASS):
     def __init__(self, parent = None):         
         super(GerarMonografia, self).__init__(parent)
         self.setupUi(self)
-        self.progressBar.setVisible(False)
+        self.progressBar.setRange(0,1)
         self.pdfHtmlButton.setEnabled(False)
         self.csvButton.setEnabled(False)
         self.showCurrentProject()
@@ -67,7 +67,27 @@ class GerarMonografia(QtGui.QDialog, FORM_CLASS):
                 
     @pyqtSlot(bool)
     def on_pdfHtmlButton_clicked(self):
-        self.monografia.createHtmlPdf()
+        self.progressBar.setRange(0,0)
+        thread = QtCore.QThread(self)
+        worker = self.monografia
+        worker.moveToThread(thread)
+        worker.finished.connect(self.taskFinished)
+        thread.started.connect(worker.createHtmlPdf)
+        thread.start()
+        self.thread = thread
+        self.worker = worker
+        #self.monografia.createHtmlPdf()
+        
+    
+    def taskFinished(self, tipo):
+        self.worker.deleteLater()
+        self.thread.quit()
+        self.thread.wait()
+        self.thread.deleteLater()
+        self.thread = None
+        self.worker = None
+        self.progressBar.setRange(0,1)
+        self.progressBar.setValue(0)
         self.pdfHtmlButton.setEnabled(False)
         
     def messageErro(self, tipo, text, details):

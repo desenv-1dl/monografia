@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Monografia
+Comment=Create monografia in pdf/html
+Exec=python /home/user/git/monografia/interfaceMonografia.py
+Icon=/home/user/git/monografia/icons/monografia.png
+Terminal=false

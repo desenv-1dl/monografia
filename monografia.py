@@ -7,18 +7,20 @@ import os, sys
 import csv
 from project import Projeto
 #imports library
+from PyQt4 import QtCore, QtGui
 import pdfkit, shutil
 import time
 import re
 from distutils.dir_util import copy_tree
 
        
-class Monografia(Projeto):
-    
+class Monografia(QtCore.QObject, Projeto):
+    finished = QtCore.pyqtSignal(int)
     def __init__(self):
         reload(sys)  
         sys.setdefaultencoding('utf8')
         self.csvList = []
+        QtCore.QObject.__init__(self)
         
     def carregarCsv(self, csvPath):
         with open(csvPath, 'r') as csvfile:
@@ -45,6 +47,7 @@ class Monografia(Projeto):
             html = self.setHtml(data, htmlTemplate) 
             pathHtml = self.createtHtml(html, pontoId)
             self.convertHtmlPdf(pathHtml, pontoId)
+        self.finished.emit(1)
                    
     def createtHtml(self, html, pontoId):
         pathHtml = os.path.join(str(self.project), 'html', str(pontoId)+'.html')
