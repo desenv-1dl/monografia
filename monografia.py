@@ -61,9 +61,9 @@ class Monografia(QtCore.QObject, Projeto):
         opt = {
             'page-size': 'A4',
             'margin-top': '0.5cm',
-            'margin-right': '0.5cm',
-            'margin-bottom': '6.0cm',
-            'margin-left': '1.5cm',
+            'margin-right': '0.0cm',
+            'margin-bottom': '5.3cm',
+            'margin-left': '2cm',
             'encoding': "UTF-8",
             'no-outline': None
         } 

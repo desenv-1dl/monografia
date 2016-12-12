@@ -76,16 +76,15 @@ class GerarMonografia(QtGui.QDialog, FORM_CLASS):
         thread.start()
         self.thread = thread
         self.worker = worker
-        #self.monografia.createHtmlPdf()
         
     
     def taskFinished(self, tipo):
-        self.worker.deleteLater()
-        self.thread.quit()
-        self.thread.wait()
-        self.thread.deleteLater()
-        self.thread = None
-        self.worker = None
+#         self.worker.deleteLater()
+#         self.thread.quit()
+#         self.thread.wait()
+#         self.thread.deleteLater()
+#         self.thread = None
+#         self.worker = None
         self.progressBar.setRange(0,1)
         self.progressBar.setValue(0)
         self.pdfHtmlButton.setEnabled(False)
