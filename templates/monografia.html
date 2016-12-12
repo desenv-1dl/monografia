@@ -6,7 +6,7 @@
         <title>Monografia</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href=".bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="bootstrap.css" rel="stylesheet" type="text/css"/>
     <style>
         
        /*Inicio Configuracao do tamanho de pagina*/ 
@@ -57,7 +57,7 @@
       .mytable {
       border-collapse: collapse;
       width: 100%;
-      height: 40px;
+      height: 50px;
       background-color: white;
     }
     .mytable-head {
@@ -249,14 +249,12 @@
         </table>        
         <table class="mytable mytable-footer">
            <tr>
-            <td width="10%" class="text-center"><strong>Operador</strong></td>
-            <td width="14%" class="text-center">{{operador-processamento}}</td>
+            <td width="15%" class="text-center"><strong>Operador</strong></td>
+            <td width="19%" class="text-center">{{operador-processamento}}</td>
             <td width="16%" class="text-center"><strong>Software/Versão</strong></td>
-            <td width="15%" class="text-center">{{software/versao}}</td>
-            <td width="09%" class="text-center"><strong>Arquivo KMZ</strong></td>
-            <td width="13%" class="text-center">{{arquivo-KMZ}}</td>
-            <td width="08%" class="text-center"><strong>RINEX</strong></td>
-            <td width="15%" class="text-center">{{RINEX}}</td>        
+            <td width="15%" class="text-center">{{software/versao}}</td>            
+            <td width="14%" class="text-center"><strong>RINEX</strong></td>
+            <td width="20%" class="text-center">{{RINEX}}</td>        
           </tr>
         </table>
     </page>
@@ -273,7 +271,7 @@
         </table>  
         <table class="mytable mytable-footer">
           <tr>
-              <td width="100%" class="text-center" style="height: 600px"><img src="{{path-vista-aerea}}" style="height: 99%; width: 99%"></td>
+              <td><img src="{{path-vista-aerea}}" style="margin-left: 46px; width: 700px"></td>
           </tr>
         </table> 
     </page>
@@ -291,8 +289,8 @@
         </table>  
         <table class="mytable mytable-body">
           <tr>
-              <td width="50%" class="text-center" style="height: 300px"><img src="{{foto1}}"style="height: 99%; width: 99%"></td>
-              <td width="50%" class="text-center" style="height: 300px"><img src="{{foto2}}" style="height: 99%; width: 99%"></td>
+              <td width="50%" class="text-center" style="height: 400px"><img src="{{foto1}}" style="height: 99%; width: 99%"></td>
+              <td width="50%" class="text-center" style="height: 400px"><img src="{{foto2}}" style="height: 99%; width: 99%"></td>
           </tr>
         </table>
         <table class="mytable mytable-body">
@@ -303,68 +301,39 @@
         </table>
         <table class="mytable mytable-footer">
           <tr>
-              <td width="50%" class="text-center" style="height: 300px"><img src="{{foto3}}" style="height: 99%; width: 99%"></td>
-              <td width="50%" class="text-center" style="height: 300px"><img src="{{foto4}}" style="height: 99%; width: 99%"></td>
+              <td width="50%" class="text-center" style="height: 400px"><img src="{{foto3}}" style="height: 99%; width: 99%"></td>
+              <td width="50%" class="text-center" style="height: 400px"><img src="{{foto4}}" style="height: 99%; width: 99%"></td>
           </tr>
         </table> 
     </page>
     <page size="A4">
         <table class="mytable mytable-head" style="margin-top: 10px">
             <tr>
-            <td width="100%" class="text-center"><strong>Croqui</strong></td>       
+            <td width="100%" class="text-center titulo"><strong>CROQUI</strong></td>       
           </tr>        
         </table>
         <table class="mytable mytable-footer">
             <tr>
                 <td width="100%" class="text-center"  style="height: 500px">
-                    <img src="{{path-croqui}}" style="height: 99%; width: 99%">
+                    <img src="{{path-croqui}}" style="width: 550px">
                 </td>       
           </tr>        
         </table>
         <table class="mytable mytable-head" style="margin-top: 10px">
             <tr>
-            <td width="100%" class="text-center titulo"><strong>RESPONSÁVEL(EIS) TÉCNICO(S)</strong></td>       
+            <td width="100%" class="text-center titulo"><strong>RESPONSÁVEL TÉCNICO</strong></td>       
           </tr>        
         </table>
         <table class="mytable mytable-body">
-            <tr>
-                <td width="30%" class="text-center">
-                    <strong>Levantamento:</strong><br> 
-                    Data: {{data/hora-de-rastreio}}
-                </td> 
+            <tr>                
                 <td width="70%" class="text-center">
-                    <br>Responsável: ______________________________<br> 
+                    <br>________________________________________________________________<br> 
                     {{operador-levantamento}}<br>
-                    <strong>Responsável pelo Levantamento</strong><br>
+                    <br>
                 </td>        
           </tr>        
         </table>
-        <table class="mytable mytable-body">
-            <tr>
-                <td width="30%" class="text-center">
-                    <strong>Processamento:</strong><br> 
-                    Data: {{data-processamento}}
-                </td> 
-                <td width="70%" class="text-center">
-                    <br>Responsável: __________________________<br> 
-                    {{operador-processamento}}<br>
-                    <strong>Responsável pelo Processamento</strong><br>
-                </td>   
-          </tr>        
-        </table>
-        <table class="mytable mytable-body">
-            <tr>
-                <td width="30%" class="text-center">
-                    <strong>Monografia:</strong><br> 
-                    Data: {{data-monografia}}
-                </td> 
-                <td width="70%" class="text-center">
-                    <br>Responsável: __________________________<br> 
-                    {{operador-monografia}}<br>
-                    <strong>Responsável pela Monografia</strong><br>
-                </td>   
-          </tr>        
-        </table>
+      
     </page>
     </body>
 </html>
