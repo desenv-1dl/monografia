@@ -21,6 +21,8 @@ class Projeto:
         copyfile(os.path.join(os.path.dirname(__file__), 'templates', '1.png'), os.path.join(newProjectPath, 'html', '.1.jpg'))
         copyfile(os.path.join(os.path.dirname(__file__), 'templates', 'dl.png'), os.path.join(newProjectPath, 'html', '.dl.png'))
         copyfile(os.path.join(os.path.dirname(__file__), 'templates', 'bootstrap.css'), os.path.join(newProjectPath, 'html', '.bootstrap.css'))
+        copyfile(os.path.join(os.path.dirname(__file__), 'templates', 'ass.jpg'), os.path.join(newProjectPath, 'html', '.ass.jpg'))
+        copyfile(os.path.join(os.path.dirname(__file__), 'templates', 'assEx.jpg'), os.path.join(newProjectPath, 'html', '.assEx.jpg'))
                        
     def abrirProjeto(self, openProjectPath):
         self.setProjectCurrent(openProjectPath)     
