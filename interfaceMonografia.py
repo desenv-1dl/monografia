@@ -27,6 +27,16 @@ class GerarMonografia(QtGui.QDialog, FORM_CLASS):
         self.showCurrentProject()
         self.monografia = Monografia()
         
+        
+    @pyqtSlot(bool)
+    def on_loadImageButton_clicked(self):
+	if self.monografia.getProjectCurrent():
+		path = unicode(QFileDialog.getOpenFileName(self, 'Selecionar Imagem', '',"Imagem png (*.png)")).encode('utf-8')
+		os.remove(os.path.join(self.monografia.getProjectCurrent(), 'html', '.dl.png'))
+		copyfile( path, os.path.join(self.monografia.getProjectCurrent(), 'html', '.dl.png'))
+	else:
+		self.messageErro(u'Aviso:', u'Não há projetos em uso !', u'Crie um projeto ou abra um e tente novamente.')
+	    
     @pyqtSlot(bool)
     def on_createCsvButton_clicked(self):
         path = unicode(QFileDialog.getSaveFileName(self, 'Salvar arquivo CSV', '')).encode('utf-8')

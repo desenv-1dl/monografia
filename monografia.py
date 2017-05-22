@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-__author__ = "César Soares"
-__date__ = "$13/08/2016 00:20:12$"
 
 #imports system
 import os, sys
@@ -21,7 +19,8 @@ class Monografia(QtCore.QObject, Projeto):
         sys.setdefaultencoding('utf8')
         self.csvList = []
         QtCore.QObject.__init__(self)
-        
+	Projeto.__init__(self)
+	        
     def carregarCsv(self, csvPath):
         with open(csvPath, 'r') as csvfile:
             reader = csv.DictReader(csvfile)
@@ -78,7 +77,7 @@ class Monografia(QtCore.QObject, Projeto):
         for variable in data:
             html = html.replace(variable, data[variable])
         return html
-                            
+                       
     def setVariables(self, line):
         pontoId = line['nome-ponto-(ID)']
         data = dict()
