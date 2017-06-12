@@ -7,8 +7,7 @@ from shutil import copyfile
 
 class Projeto:
     def __init__(self): 
-        self.project = None
- 	self.newImage = None   
+        self.project = None   
        
     def criarProjeto(self, newProjectPath):
         os.mkdir(newProjectPath)
@@ -30,15 +29,6 @@ class Projeto:
     
     def setProjectCurrent(self, project):
         self.project = project
-
-    def getProjectCurrent(self):
-        return self.project
-
-    def setPathNewImage(self, p):
-	self.newImage = p
-
-    def getPathNewImage(self):
-	return self.newImage
     
     def testProject(self, projectPath):
         test1 = os.path.exists(os.path.join(projectPath, 'html'))

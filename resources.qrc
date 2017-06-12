@@ -7,7 +7,6 @@
         <file>icons/negative.png</file>
         <file>icons/newProject.png</file>
         <file>icons/openProject.png</file>        
-        <file>icons/createCsv.png</file> 
-	 <file>icons/loadImage.png</file>        
+        <file>icons/createCsv.png</file>        
     </qresource>
 </RCC>
